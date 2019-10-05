@@ -52,7 +52,7 @@ public class SimpleHorizonClient implements HorizonClient {
   }
 
   @Override
-  public void createTable(CreateTableRequest create) throws CarbonException {
+  public void createTable(CreateTableRequest create) throws IOException {
     Objects.requireNonNull(create);
     restTemplate.postForEntity(serviceUri + "/table/create", create, String.class);
   }
@@ -64,13 +64,13 @@ public class SimpleHorizonClient implements HorizonClient {
   }
 
   @Override
-  public void loadData(LoadRequest load) throws IOException, CarbonException {
+  public void loadData(LoadRequest load) throws IOException {
     Objects.requireNonNull(load);
     restTemplate.postForEntity(serviceUri + "/table/load", load, String.class);
   }
 
   @Override
-  public List<CarbonRow> select(SelectRequest select) throws IOException, CarbonException {
+  public List<CarbonRow> select(SelectRequest select) throws IOException {
     Objects.requireNonNull(select);
     ResponseEntity<SelectResponse> response =
         restTemplate.postForEntity(serviceUri + "/table/select", select, SelectResponse.class);

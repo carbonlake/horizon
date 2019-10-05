@@ -39,35 +39,35 @@ public interface HorizonClient extends Closeable {
 
   /**
    * Create a Table
-   * @param create descriptor for create table operation
+   * @param create create table request
    * @throws CarbonException if network or disk IO error occurs
    */
-  void createTable(CreateTableRequest create) throws CarbonException;
+  void createTable(CreateTableRequest create) throws IOException;
 
   /**
    * Drop a Table, and remove all data in it
-   * @param table table identifier
+   * @param drop drop table request
    * @throws IOException if network or disk IO error occurs
    */
   void dropTable(DropTableRequest drop) throws IOException;
 
   /**
    * Load data into a Table
-   * @param load descriptor for load operation
+   * @param load load table request
    * @throws IOException if network or disk IO error occurs
    */
-  void loadData(LoadRequest load) throws IOException, CarbonException;
+  void loadData(LoadRequest load) throws IOException;
 
   /**
    * Scan a Table and return matched rows
-   * @param select descriptor for scan operation, including required column, filter, etc
+   * @param select select request, supported operations: scan, projection, filter, limit
    * @return matched rows
    * @throws IOException if network or disk IO error occurs
    */
-  List<CarbonRow> select(SelectRequest select) throws IOException, CarbonException;
+  List<CarbonRow> select(SelectRequest select) throws IOException;
 
   /**
-   * Executor a SQL statement
+   * Execute a SQL statement
    * @param sqlString SQL statement
    * @return matched rows
    * @throws IOException if network or disk IO error occurs
