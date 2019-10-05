@@ -1,6 +1,6 @@
 ## REST service for Apache CarbonData
 
-Two services are supported: simple query and standard SQL query
+Two services are supported
 1. Simple query service 
 - simply but fully parallel query: scan, projection, filter, limit
 - support local or distributed deployment option.
